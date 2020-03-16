@@ -1,44 +1,31 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
+      <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>Sign in User</ion-title>
+    <ion-title>
+    <ion-title>CT Checkout Login</ion-title>
+  </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <form>    
-    <ion-item lines="full">
-      <ion-label position="floating">Email</ion-label>
-      <ion-input type="text" #email required></ion-input>
-    </ion-item> 
+<ion-content padding>
+<img src="https://thecyberworld.org/ctcheckout/wp-content/uploads/2020/02/logo-color-icon-128x128-1.png" />
+<div class="alert alert-danger" role="alert" *ngIf="error_message">{{error_message}}</div>
+<form [formGroup]="login_form" (ngSubmit)="login(login_form.value)">
+<ion-item>
+<ion-label color="primary">Username</ion-label>
+<ion-input type="text" formControlName="username" placeholder="Enter username" required></ion-input>
+</ion-item>
+<ion-item>
+<ion-label color="primary">Password</ion-label>
+<ion-input type="password" formControlName="password" placeholder="Enter password" required></ion-input>
+</ion-item>
+<ion-button expand="full"  type="submit">Login</ion-button>
+</form>
 
-    <ion-item lines="full">
-      <ion-label position="floating">Password</ion-label>
-      <ion-input type="password" #password required></ion-input>
-    </ion-item>
-
-    <ion-row>
-      <ion-col> 
-      <ion-button type="submit" (click)="logIn(email, password)" expand="block">Login</ion-button>
-      </ion-col>
-    </ion-row>
-	
-    <ion-button [routerLink]="['/forgot-password']" expand="block" color="primary">Forgot Password</ion-button>
-    <span class="divider line one-line">or</span>
-
-    <ion-row>
-      <ion-col> 
-        <ion-button 
-         type="submit" 
-         color="danger"
-         (click)="authService.GoogleAuth()" 
-         expand="block">
-           Login with Google
-        </ion-button>
-      </ion-col>
-    </ion-row>
-
-  </form>
+<ion-item text-center><ion-label><a href="#" onclick="window.open('https://thecyberworld.org/ctcheckout/wp-login.php?action=lostpassword', '_system', 'location=yes'); return false;">
+                Reset Password
+            </a></ion-label></ion-item>
+<ion-item text-center><ion-label><a href="/register">Register for an account</a></ion-label></ion-item>
 </ion-content>

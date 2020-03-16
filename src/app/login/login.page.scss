@@ -1,36 +1,12 @@
-.small-text {
-    text-decoration: none;
-    display: block;
-    font-size: 14px;
-    text-align: center;
-    margin-top: 10px;
+.alert {
+position: relative;
+padding: .75rem 1.25rem;
+margin-bottom: 1rem;
+border: 1px solid transparent;
+border-radius: .25rem;
 }
-
-.divider {
-    display: flex;
-    
-    &:before,
-    &:after {
-      content: "";
-      flex: 1;
-    }
-}
-  
-.line {
-    align-items: center;
-    margin: 1em -1em;
-    color: #cccccc;
-    
-    &:before,
-    &:after {
-      height: 1px;
-      margin: 0 1em;
-    }
-} 
-
-.one-line {
-    &:before,
-    &:after {
-       background: #cccccc;
-    }
+.alert-danger {
+color: #721c24;
+background-color: #f8d7da;
+border-color: #f5c6cb;
 }
