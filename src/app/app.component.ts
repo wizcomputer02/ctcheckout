@@ -57,6 +57,11 @@ export class AppComponent {
       icon: 'md-copy'
     },
     {
+      title: 'Connect bank account',
+      url: '/bankaccount',
+      icon: 'md-wallet'
+    },
+    {
       title: 'Withdraw Funds',
       url: '/withdraw',
       icon: 'md-cash'

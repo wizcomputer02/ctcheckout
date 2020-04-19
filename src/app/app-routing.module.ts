@@ -39,6 +39,18 @@ const routes: Routes = [
     path: 'encryptedcard',
     loadChildren: () => import('./encryptedcard/encryptedcard.module').then( m => m.EncryptedcardPageModule)
   },
+  {
+    path: 'bankaccount',
+    loadChildren: () => import('./bankaccount/bankaccount.module').then( m => m.BankaccountPageModule)
+  },
+  {
+    path: 'uploadbankaccount',
+    loadChildren: () => import('./uploadbankaccount/uploadbankaccount.module').then( m => m.UploadbankaccountPageModule)
+  },
+  {
+    path: 'uploadcreditdebitcard',
+    loadChildren: () => import('./uploadcreditdebitcard/uploadcreditdebitcard.module').then( m => m.UploadcreditdebitcardPageModule)
+  },
   
   {path: 'login', loadChildren: './login/login.module#LoginPageModule'},
   {path: ':slug', loadChildren: './post/post.module#PostPageModule'},
