@@ -4,6 +4,7 @@ import {Router} from '@angular/router';
 import {LoadingController} from '@ionic/angular';
 import {AuthenticationService} from '../services/authentication.service';
 import {DataService} from '../services/data.service';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'app-login',
@@ -18,6 +19,7 @@ public formBuilder: FormBuilder,
 public loadingController: LoadingController,
 public authenticationService: AuthenticationService,
 public dataService: DataService,
+public storage: Storage,
 private router: Router) {
 }
 ngOnInit() {
@@ -35,7 +37,11 @@ message: 'Please wait...'
 });
 loading.present();
 this.authenticationService.doLogin(value.username, value.password)
-.subscribe(res => {
+.subscribe((res: any) => {
+    if(res.token != ""){
+      console.log("user", res);
+      this.storage.set('user', res);
+    }
     this.authenticationService.setUser(res);
     // Reset the post items so that next time, they are completely
     // reloaded for the newly authenticated user...
