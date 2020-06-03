@@ -3,20 +3,25 @@ import { Component } from '@angular/core';
 import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
-import { Storage } from '@ionic/storage';
+
+import {DataService} from './services/data.service';
+import {environment} from './../environments/environment';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
-  styleUrls: ['app.component.scss']
+  styleUrls: ['app.component.scss'],
 })
-export class AppComponent {
-  public email;
-  public username;
-  public appPages = [
+export class AppComponent  {
+	public appPages = [
     {
       title: 'Home',
       url: '/home',
       icon: 'home'
+    },
+    {
+      title: 'Store',
+      url: '/post/370',
+      icon: 'cart'
     },
     {
       title: '1st transaction',
@@ -49,7 +54,7 @@ export class AppComponent {
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
-    public storage: Storage
+	public dataService: DataService
   ) {
     this.initializeApp();
   }
@@ -58,17 +63,7 @@ export class AppComponent {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
-      this.getInfo();
     });
   }
-  getInfo(){
-    this.storage.get('user').then((val) => {
-      if(val != null){
-        this.email = val.user_email;
-        this.username = val.user_display_name;  
-      }
-    });
-  }
- 
-
+  
 }

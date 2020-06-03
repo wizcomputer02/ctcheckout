@@ -14,21 +14,17 @@ export class HomePage implements OnInit {
 //    @ViewChild(InfiniteScroll) infiniteScroll: InfiniteScroll;
 
     items: any[];
-    username:any;
 //    dateFormat = environment.dateFormat;
 
-    constructor(public dataService: DataService,) {
+    constructor(public dataService: DataService) {
     }
 
     ngOnInit() {
         console.log('> HomePage.ngOnInit');
-       
         this.dataService.getPosts().subscribe((data: any[]) => {
             this.items = data;
         });
     }
-
-
 
     getMorePosts(evt) {
         this.dataService.getMorePosts().subscribe((data: any[]) => {
@@ -36,7 +32,6 @@ export class HomePage implements OnInit {
 //            this.infiniteScroll.complete();
         });
     }
-
 
  /*   infiniteScrollDisabled() {
         if (this.dataService.hasMorePosts()) {

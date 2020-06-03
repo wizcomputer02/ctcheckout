@@ -8,18 +8,6 @@
       </ion-header>
       <ion-content>
         <ion-list>
-
-          <ion-card *ngIf="username">
-            <ion-card-content>
-               <label class="text">Hello, {{username}}</label> 
-               <ion-list no-lines>
-                <label class="text">{{email}}</label> 
-               </ion-list>
-            </ion-card-content>
-          </ion-card>
-
-
-
           <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages">
             <ion-item [routerDirection]="'root'" [routerLink]="[p.url]">
               <ion-icon slot="start" [name]="p.icon"></ion-icon>

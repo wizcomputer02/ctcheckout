@@ -54,7 +54,8 @@ const routes: Routes = [
   
   {path: 'login', loadChildren: './login/login.module#LoginPageModule'},
   {path: ':slug', loadChildren: './post/post.module#PostPageModule'},
-];
+  
+  ];
 
 @NgModule({
   imports: [
