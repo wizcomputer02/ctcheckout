@@ -11,20 +11,21 @@
 
 <ion-content>
           <div class="fire-logo">
-            <img src="https://thecyberworld.org/ctcheckout/wp-content/uploads/2020/05/logo-color-icon-128x128-1.png" style="width:120px;">
+            <img src="https://thecyberworld.org/ctcheckout/wp-content/uploads/2020/02/logo-color-icon-128x128-1.png" style="width:120px;">
             <ion-text>
               <h2 no-margin margin-vertical text-center>Sign up below</h2>
             </ion-text>
           </div>
+          <div class="alert alert-danger" role="alert" *ngIf="error_message">{{error_message}}</div>
   <form [formGroup]="signup_form" (ngSubmit)="signup(signup_form.value)">
-    <ion-item lines="full">
+    <!-- <ion-item lines="full">
       <ion-label position="floating">Username</ion-label>
-      <ion-input type="text" formControlName="email" required></ion-input>
-    </ion-item>
+      <ion-input type="text" formControlName="username" required></ion-input>
+    </ion-item> -->
 
     <ion-item lines="full">
       <ion-label position="floating">Email</ion-label>
-      <ion-input type="text" formControlName="username" required></ion-input>
+      <ion-input type="email" formControlName="email" required></ion-input>
     </ion-item>
 
     <ion-item lines="full">

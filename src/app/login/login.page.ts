@@ -1,9 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
 import {Validators, FormBuilder, FormGroup, FormControl} from '@angular/forms';
 import {Router} from '@angular/router';
 import {LoadingController} from '@ionic/angular';
 import {AuthenticationService} from '../services/authentication.service';
 import {DataService} from '../services/data.service';
+import { Storage } from '@ionic/storage';
+import { OrderServiceService } from '../services/order-service.service';
+import { FirebaseService } from '../services/firebase.service';
 
 @Component({
   selector: 'app-login',
@@ -13,41 +16,51 @@ import {DataService} from '../services/data.service';
 export class LoginPage implements OnInit {
 login_form: FormGroup;
 error_message: string;
+
 constructor(
 public formBuilder: FormBuilder,
 public loadingController: LoadingController,
 public authenticationService: AuthenticationService,
+public orderService: OrderServiceService,
 public dataService: DataService,
-private router: Router) {
+public storage: Storage,
+private router: Router,
+public firebaseService: FirebaseService) {
 }
 ngOnInit() {
-this.login_form = this.formBuilder.group({
-username: new FormControl('', Validators.compose([
-Validators.required
-])),
-password: new FormControl('', Validators.required)
-});
+  this.login_form = this.formBuilder.group({
+    email: new FormControl('', Validators.compose([
+      Validators.required
+    ])),
+    password: new FormControl('', Validators.required)
+  });
 }
-async login(value) {
-const loading = await this.loadingController.create({
-duration: 5000,
-message: 'Please wait...'
-});
-loading.present();
-this.authenticationService.doLogin(value.username, value.password)
-.subscribe(res => {
-    this.authenticationService.setUser(res);
-    // Reset the post items so that next time, they are completely
-    // reloaded for the newly authenticated user...
-    this.dataService.items = [];
-    loading.dismiss();
-    this.router.navigateByUrl('home');
-},
-err => {
-    this.error_message = 'Invalid credentials.';
-    loading.dismiss();
-    console.log(err);
-});
-}
+
+  async login(value) {
+
+    const loading = await this.loadingController.create({
+      duration: 5000,
+      message: 'Please wait...'
+    });
+    loading.present();
+    
+
+    this.firebaseService.signin(value.email.trim(), value.password.trim())
+    .then((user)=>{
+      
+      loading.dismiss();
+      console.log('firebase login', user);
+
+    }).catch((error)=>{
+      
+      loading.dismiss();
+
+      this.error_message = error['message'] ? error['message'] : 'Invalid login!';
+      console.log('error while login with firebase', error);
+    })
+
+  }
+
+ 
 
 }
