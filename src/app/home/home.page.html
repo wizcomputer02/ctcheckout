@@ -10,11 +10,6 @@
 </ion-header>
 
 <ion-content>
- <ion-card *ngFor="let item of items">
-   <ion-card-content>
-	  <div style="font-size:25px;" [innerHTML]="item.content.rendered"></div>
-    </ion-card-content>
-</ion-card>
 	<div style="height: 100px; width: 300px;">
 		<div style="padding-left:30px;width:140px; float:left;">
 	    <h1 style="color:#186cb6; font-size: 25px;">The CT Checkout app</h1>
@@ -24,7 +19,7 @@
 		</div>
 	</div>
 	  <div style="padding:20px; position:relative; top:20px;">
-	<ion-button color="secondary" href="/transactions" style="background-color:#186cb6">Skip to transactions</ion-button>
+		<ion-button color="secondary" href="/transactions" style="background-color:#186cb6">Skip to transactions</ion-button>
 	  <h3>
 		<i>We can remotely place a Triple DES encrypted prepaid debit card on your customer’s CT Checkout app which will enable them to buy from you with their encrypted prepaid debit cards at a cost savings card swiped merchant rate for you.</i>
 	  </h3>

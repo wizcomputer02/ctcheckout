@@ -48,8 +48,11 @@ export class AppComponent {
     public orderServices: OrderServiceService,
     public firebaseService: FirebaseService
   ) {
+    
     this.initializeApp();
   }
+
+
 
   initializeApp() {
     this.platform.ready().then(() => {

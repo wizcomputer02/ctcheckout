@@ -6,13 +6,13 @@ import { Router } from '@angular/router';
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyD1LSDh6J9oHnKdw9rwXH_zziXrkmjrtOA",
-  authDomain: "mrhubby-581b3.firebaseapp.com",
-  databaseURL: "https://mrhubby-581b3.firebaseio.com",
-  projectId: "mrhubby-581b3",
-  storageBucket: "mrhubby-581b3.appspot.com",
-  messagingSenderId: "755938913834",
-  appId: "1:755938913834:web:de9fcd32cc4ebce44c5d53"
+  apiKey: "AIzaSyCx8_oEV8wzs8zLHD78EM-qbOtaeOZdQIQ",
+  authDomain: "ctcheckout-26737.firebaseapp.com",
+  databaseURL: "https://ctcheckout-26737.firebaseio.com",
+  projectId: "ctcheckout-26737",
+  storageBucket: "ctcheckout-26737.appspot.com",
+  messagingSenderId: "175728067665",
+  appId: "1:175728067665:android:60d43259e11a908ab52470"
 };
 
 @Injectable({
